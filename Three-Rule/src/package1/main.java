@@ -469,7 +469,7 @@ public class main extends javax.swing.JFrame {
     private void aboutmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutmenuActionPerformed
         // TODO add your handling code here:
 
-        JOptionPane.showMessageDialog(null, "Marco Lecona 2018-2020");
+        JOptionPane.showMessageDialog(null, "Version 1.2\nMarco Lecona 2018-2020");
     }//GEN-LAST:event_aboutmenuActionPerformed
 
     /**
