@@ -24,6 +24,7 @@ public class main extends javax.swing.JFrame {
 
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         field1 = new javax.swing.JTextField();
         field2 = new javax.swing.JTextField();
@@ -69,21 +70,12 @@ public class main extends javax.swing.JFrame {
         field3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         field3.setForeground(new java.awt.Color(255, 255, 255));
         field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        field3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                field3FocusLost(evt);
-            }
-        });
 
+        field4.setEditable(false);
         field4.setBackground(new java.awt.Color(0, 0, 0));
         field4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         field4.setForeground(new java.awt.Color(255, 255, 255));
         field4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        field4.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                field4FocusGained(evt);
-            }
-        });
 
         calculate.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         calculate.setText("Calculate");
@@ -131,23 +123,20 @@ public class main extends javax.swing.JFrame {
                             .addComponent(jLabel3)))
                     .addComponent(calculate))
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(clear)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(calculate_again)
-                        .addGap(19, 19, 19))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(clear)))
+                .addGap(54, 54, 54))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,11 +152,12 @@ public class main extends javax.swing.JFrame {
                     .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(clear)
-                    .addComponent(calculate)
-                    .addComponent(calculate_again))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(calculate)
+                        .addComponent(calculate_again)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         about.setText("File");
@@ -237,9 +227,12 @@ public class main extends javax.swing.JFrame {
 
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
         // TODO add your handling code here:
+        
+        
 
-        if (field1.getText().isEmpty() && field2.getText().isEmpty() && field3.getText().isEmpty() && field4.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Fields Are Empty");
+        if (field1.getText().isEmpty() || field2.getText().isEmpty() || field3.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fields Are Empty 1");
+
         } else if (field4.getText().isEmpty()) {
 
             field4.setText(null);
@@ -257,57 +250,9 @@ public class main extends javax.swing.JFrame {
             field4.setText(resultfinal);
             option = 1;
 
-        } else if (field3.getText().isEmpty()) {
-
-            field1c = Float.parseFloat(field1.getText());
-
-            field2c = Float.parseFloat(field2.getText());
-
-            field4c = Float.parseFloat(field4.getText());
-
-            float result = (field4c * field1c) / field2c;
-
-            String resultfinal = Float.toString(result);
-
-            field3.setText(resultfinal);
-
-            option = 2;
-
-        } else if (field1.getText().isEmpty()) {
-
-            field2c = Float.parseFloat(field2.getText());
-
-            field3c = Float.parseFloat(field3.getText());
-
-            field4c = Float.parseFloat(field4.getText());
-
-            float result = (field3c * field2c) / field4c;
-
-            String resultfinal = Float.toString(result);
-
-            field1.setText(resultfinal);
-
-            option = 3;
-
-        } else if (field2.getText().isEmpty()) {
-
-            field1c = Float.parseFloat(field1.getText());
-
-            field3c = Float.parseFloat(field3.getText());
-
-            field4c = Float.parseFloat(field4.getText());
-
-            float result = (field4c * field1c) / field3c;
-
-            String resultfinal = Float.toString(result);
-
-            field2.setText(resultfinal);
-
-            option = 4;
-
         } else {
 
-            JOptionPane.showMessageDialog(null, "Fields Are Empty");
+            JOptionPane.showMessageDialog(null, "Fields Are Empty 2");
         }
 
 
@@ -324,7 +269,7 @@ public class main extends javax.swing.JFrame {
         field1.setEditable(true);
         field2.setEditable(true);
         field3.setEditable(true);
-        field4.setEditable(true);
+        field4.setEditable(false);
 
 
     }//GEN-LAST:event_clearActionPerformed
@@ -353,54 +298,6 @@ public class main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Fields Are Empty");
         }
     }//GEN-LAST:event_calculate_againActionPerformed
-
-    private void field4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field4FocusGained
-        // TODO add your handling code here:
-
-        if (field4.getText().isEmpty()) {
-
-            field4.setText(null);
-
-            field1c = Float.parseFloat(field1.getText());
-
-            field2c = Float.parseFloat(field2.getText());
-
-            field3c = Float.parseFloat(field3.getText());
-
-            float result = (field3c * field2c) / field1c;
-
-            String resultfinal = Float.toString(result);
-
-            field4.setText(resultfinal);
-            option = 1;
-        }
-    }//GEN-LAST:event_field4FocusGained
-
-    private void field3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field3FocusLost
-        // TODO add your handling code here:
-
-        field4.requestFocusInWindow();
-
-        /*  
-
-         if (field4.getText().isEmpty()) {
-
-         field4.setText(null);
-
-         field1c = Float.parseFloat(field1.getText());
-
-         field2c = Float.parseFloat(field2.getText());
-
-         field3c = Float.parseFloat(field3.getText());
-
-         float result = (field3c * field2c) / field1c;
-
-         String resultfinal = Float.toString(result);
-
-         field4.setText(resultfinal);
-         option = 1;
-         } */
-    }//GEN-LAST:event_field3FocusLost
 
     private void lightThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lightThemeActionPerformed
         // TODO add your handling code here:
@@ -531,6 +428,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem lightTheme;
     // End of variables declaration//GEN-END:variables
 }
