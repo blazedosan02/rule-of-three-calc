@@ -58,6 +58,11 @@ public class main extends javax.swing.JFrame {
 
         field1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        field1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                field1KeyTyped(evt);
+            }
+        });
 
         field2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -359,6 +364,18 @@ public class main extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null, "Version 1.3\nMarco Lecona 2018-2020");
     }//GEN-LAST:event_aboutmenuActionPerformed
+
+    private void field1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field1KeyTyped
+        
+        char c = evt.getKeyChar();
+        
+        if(!Character.isDigit(c)){
+            
+            evt.consume();
+        }
+        
+        
+    }//GEN-LAST:event_field1KeyTyped
 
     /**
      * @param args the command line arguments
