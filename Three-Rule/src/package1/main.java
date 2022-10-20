@@ -32,11 +32,10 @@ public class main extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
-        Panel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        mainPanel = new javax.swing.JPanel();
+        proportionA = new javax.swing.JLabel();
+        proportionB = new javax.swing.JLabel();
         calculate = new javax.swing.JButton();
-        calculate_again = new javax.swing.JButton();
         clear = new javax.swing.JButton();
         field1 = new javax.swing.JTextField();
         field3 = new javax.swing.JTextField();
@@ -44,13 +43,10 @@ public class main extends javax.swing.JFrame {
         field4 = new javax.swing.JTextField();
         arrowLabel = new javax.swing.JLabel();
         arrowLabel2 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenuBar();
         about = new javax.swing.JMenu();
         aboutmenu = new javax.swing.JMenuItem();
-        closeMenu = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        editMenu = new javax.swing.JMenu();
         lightTheme = new javax.swing.JMenuItem();
         darkTheme = new javax.swing.JMenuItem();
 
@@ -61,17 +57,18 @@ public class main extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Three Rule Calculator");
+        setTitle("Rule Of Three Calculator");
         setResizable(false);
 
-        Panel2.setBackground(new java.awt.Color(255, 255, 255));
-        Panel2.setPreferredSize(new java.awt.Dimension(492, 210));
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setPreferredSize(new java.awt.Dimension(492, 210));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Proportion A");
+        proportionA.setBackground(new java.awt.Color(0, 0, 0));
+        proportionA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        proportionA.setText("Proportion A");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Proportion B");
+        proportionB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        proportionB.setText("Proportion B");
 
         calculate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         calculate.setText("Calculate");
@@ -81,16 +78,9 @@ public class main extends javax.swing.JFrame {
             }
         });
 
-        calculate_again.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        calculate_again.setText("Calculate Again");
-        calculate_again.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calculate_againActionPerformed(evt);
-            }
-        });
-
         clear.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         clear.setText("Clear");
+        clear.setPreferredSize(new java.awt.Dimension(172, 27));
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearActionPerformed(evt);
@@ -100,6 +90,7 @@ public class main extends javax.swing.JFrame {
         field1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field1.setText("0");
+        field1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         field1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 field1FocusGained(evt);
@@ -109,6 +100,7 @@ public class main extends javax.swing.JFrame {
         field3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field3.setText("0");
+        field3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         field3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 field3FocusGained(evt);
@@ -118,6 +110,7 @@ public class main extends javax.swing.JFrame {
         field2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field2.setText("0");
+        field2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         field2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 field2FocusGained(evt);
@@ -129,67 +122,64 @@ public class main extends javax.swing.JFrame {
         field4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field4.setText("X");
+        field4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         arrowLabel.setText("-->");
 
         arrowLabel2.setText("-->");
 
-        javax.swing.GroupLayout Panel2Layout = new javax.swing.GroupLayout(Panel2);
-        Panel2.setLayout(Panel2Layout);
-        Panel2Layout.setHorizontalGroup(
-            Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel2Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(calculate))
-                .addGap(28, 28, 28)
-                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Panel2Layout.createSequentialGroup()
-                        .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(arrowLabel)
-                        .addGap(13, 13, 13)
-                        .addComponent(field2))
-                    .addGroup(Panel2Layout.createSequentialGroup()
-                        .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(calculate_again)
-                            .addGroup(Panel2Layout.createSequentialGroup()
-                                .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(arrowLabel2)))
-                        .addGap(11, 11, 11)
-                        .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(Panel2Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(clear))
-                            .addGroup(Panel2Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(field4)))))
-                .addContainerGap(53, Short.MAX_VALUE))
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(proportionA)
+                            .addComponent(proportionB))
+                        .addGap(33, 33, 33)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(arrowLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(mainPanelLayout.createSequentialGroup()
+                            .addComponent(arrowLabel)
+                            .addGap(18, 18, 18)
+                            .addComponent(field2)))
+                    .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
-        Panel2Layout.setVerticalGroup(
-            Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(proportionA)
                     .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(arrowLabel))
-                .addGap(29, 29, 29)
-                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(arrowLabel)
+                    .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(proportionB)
                     .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(arrowLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(arrowLabel2)
+                    .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(calculate)
-                    .addComponent(calculate_again)
-                    .addComponent(clear))
-                .addGap(25, 25, 25))
+                    .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         about.setText("File");
@@ -202,21 +192,9 @@ public class main extends javax.swing.JFrame {
         });
         about.add(aboutmenu);
 
-        closeMenu.setText("Close");
-        closeMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                closeMenuActionPerformed(evt);
-            }
-        });
-        about.add(closeMenu);
+        menuBar.add(about);
 
-        jMenuBar1.add(about);
-
-        jMenu2.setText("Edit");
-
-        jMenu3.setText("Appearance");
-
-        jMenu4.setText("Theme");
+        editMenu.setText("View");
 
         lightTheme.setText("Light Theme");
         lightTheme.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +202,7 @@ public class main extends javax.swing.JFrame {
                 lightThemeActionPerformed(evt);
             }
         });
-        jMenu4.add(lightTheme);
+        editMenu.add(lightTheme);
 
         darkTheme.setText("Dark Theme");
         darkTheme.addActionListener(new java.awt.event.ActionListener() {
@@ -232,25 +210,21 @@ public class main extends javax.swing.JFrame {
                 darkThemeActionPerformed(evt);
             }
         });
-        jMenu4.add(darkTheme);
+        editMenu.add(darkTheme);
 
-        jMenu3.add(jMenu4);
+        menuBar.add(editMenu);
 
-        jMenu2.add(jMenu3);
-
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
         );
 
         pack();
@@ -258,12 +232,11 @@ public class main extends javax.swing.JFrame {
 
 
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
-        // TODO add your handling code here:
 
         if (field1.getText().isEmpty() || field2.getText().isEmpty() || field3.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Fields Are Empty 1");
+            JOptionPane.showMessageDialog(null, "Fields Are Empty");
 
-        } else if (field4.getText().isEmpty()) {
+        } else {
 
             field4.setText(null);
 
@@ -278,23 +251,18 @@ public class main extends javax.swing.JFrame {
             String resultfinal = Float.toString(result);
 
             field4.setText(resultfinal);
-            option = 1;
 
-        } else {
-
-            JOptionPane.showMessageDialog(null, "Fields Are Empty 2");
         }
 
 
     }//GEN-LAST:event_calculateActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        // TODO add your handling code here:
 
         field1.setText("0");
         field2.setText("0");
         field3.setText("0");
-        field4.setText("0");
+        field4.setText("X");
 
         field1.setEditable(true);
         field2.setEditable(true);
@@ -305,38 +273,17 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
 
-    private void calculate_againActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculate_againActionPerformed
-        // TODO add your handling code here:
-
-        if (option == 1) {
-
-            field4.setText(null);
-
-        } else if (option == 2) {
-
-            field3.setText(null);
-
-        } else if (option == 3) {
-
-            field1.setText(null);
-
-        } else if (option == 4) {
-
-            field2.setText(null);
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Fields Are Empty");
-        }
-    }//GEN-LAST:event_calculate_againActionPerformed
-
     private void lightThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lightThemeActionPerformed
-        // TODO add your handling code here:
 
-        //Panel color
-        //Label Colors
-        jLabel3.setForeground(Color.black);
+        mainPanel.setBackground(Color.white);
 
-        jLabel4.setForeground(Color.black);
+        proportionA.setForeground(Color.black);
+
+        proportionB.setForeground(Color.black);
+
+        arrowLabel.setForeground(Color.black);
+
+        arrowLabel2.setForeground(Color.black);
 
         //Field Colors
         field1.setForeground(Color.black);
@@ -357,46 +304,42 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_lightThemeActionPerformed
 
     private void darkThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darkThemeActionPerformed
-        // TODO add your handling code here:
 
-        //Panel color
-        //Label Colors
-        jLabel3.setForeground(Color.white);
+        mainPanel.setBackground(new Color(20, 20, 20));
 
-        jLabel4.setForeground(Color.white);
+        proportionA.setForeground(Color.white);
+
+        proportionB.setForeground(Color.white);
+
+        arrowLabel.setForeground(Color.white);
+
+        arrowLabel2.setForeground(Color.white);
 
         //Field Colors
         field1.setForeground(Color.white);
 
-        field1.setBackground(Color.black);
+        field1.setBackground(new Color(51, 51, 51));
 
         field2.setForeground(Color.white);
 
-        field2.setBackground(Color.black);
+        field2.setBackground(new Color(51, 51, 51));
 
         field3.setForeground(Color.white);
 
-        field3.setBackground(Color.black);
+        field3.setBackground(new Color(51, 51, 51));
 
         field4.setForeground(Color.white);
 
-        field4.setBackground(Color.black);
+        field4.setBackground(new Color(51, 51, 51));
     }//GEN-LAST:event_darkThemeActionPerformed
 
-    private void closeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeMenuActionPerformed
-        // TODO add your handling code here:
-
-        System.exit(0);
-    }//GEN-LAST:event_closeMenuActionPerformed
-
     private void aboutmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutmenuActionPerformed
-        // TODO add your handling code here:
 
-        JOptionPane.showMessageDialog(null, "Version 1.3\nMarco Lecona 2018-2020");
+        JOptionPane.showMessageDialog(null, "Version 2.0\nMarco Lecona 2018-2022");
+
     }//GEN-LAST:event_aboutmenuActionPerformed
 
     private void field1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field1FocusGained
-        // TODO add your handling code here:
 
         field1.setText("");
 
@@ -491,30 +434,26 @@ public class main extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Panel2;
     private javax.swing.JMenu about;
     private javax.swing.JMenuItem aboutmenu;
     private javax.swing.JLabel arrowLabel;
     private javax.swing.JLabel arrowLabel2;
     private javax.swing.JButton calculate;
-    private javax.swing.JButton calculate_again;
     private javax.swing.JButton clear;
-    private javax.swing.JMenuItem closeMenu;
     private javax.swing.JMenuItem darkTheme;
+    private javax.swing.JMenu editMenu;
     private javax.swing.JTextField field1;
     private javax.swing.JTextField field2;
     private javax.swing.JTextField field3;
     private javax.swing.JTextField field4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem lightTheme;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JLabel proportionA;
+    private javax.swing.JLabel proportionB;
     // End of variables declaration//GEN-END:variables
 }
