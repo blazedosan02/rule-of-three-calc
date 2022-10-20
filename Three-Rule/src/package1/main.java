@@ -25,16 +25,16 @@ public class main extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jPanel1 = new javax.swing.JPanel();
-        field1 = new javax.swing.JTextField();
-        field2 = new javax.swing.JTextField();
-        field3 = new javax.swing.JTextField();
-        field4 = new javax.swing.JTextField();
-        calculate = new javax.swing.JButton();
-        clear = new javax.swing.JButton();
+        Panel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        calculate = new javax.swing.JButton();
         calculate_again = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
+        field1 = new javax.swing.JTextField();
+        field3 = new javax.swing.JTextField();
+        field2 = new javax.swing.JTextField();
+        field4 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         about = new javax.swing.JMenu();
         aboutmenu = new javax.swing.JMenuItem();
@@ -53,33 +53,28 @@ public class main extends javax.swing.JFrame {
         setTitle("Three Rule Calculator");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setToolTipText("");
+        Panel2.setBackground(new java.awt.Color(255, 255, 255));
+        Panel2.setPreferredSize(new java.awt.Dimension(492, 210));
 
-        field1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        field1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                field1KeyTyped(evt);
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Proportion A");
 
-        field2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        field3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        field4.setEditable(false);
-        field4.setBackground(new java.awt.Color(255, 255, 255));
-        field4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        field4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Proportion B");
 
         calculate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         calculate.setText("Calculate");
         calculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calculateActionPerformed(evt);
+            }
+        });
+
+        calculate_again.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        calculate_again.setText("Calculate Again");
+        calculate_again.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculate_againActionPerformed(evt);
             }
         });
 
@@ -91,69 +86,85 @@ public class main extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Proportion A");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Proportion B");
-
-        calculate_again.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        calculate_again.setText("Calculate Again");
-        calculate_again.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calculate_againActionPerformed(evt);
+        field1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        field1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                field1KeyTyped(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)))
+        field3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        field3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                field3KeyTyped(evt);
+            }
+        });
+
+        field2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        field2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                field2KeyTyped(evt);
+            }
+        });
+
+        field4.setEditable(false);
+        field4.setBackground(new java.awt.Color(255, 255, 255));
+        field4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        field4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        field4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                field4KeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Panel2Layout = new javax.swing.GroupLayout(Panel2);
+        Panel2.setLayout(Panel2Layout);
+        Panel2Layout.setHorizontalGroup(
+            Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel2Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
                     .addComponent(calculate))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel2Layout.createSequentialGroup()
+                        .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Panel2Layout.createSequentialGroup()
+                        .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(calculate_again)
                             .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(calculate_again)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(clear)))
-                .addGap(54, 54, 54))
+                        .addGap(22, 22, 22)
+                        .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(clear))))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        Panel2Layout.setVerticalGroup(
+            Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
                     .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
                     .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(clear)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(calculate)
-                        .addComponent(calculate_again)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(calculate)
+                    .addComponent(calculate_again)
+                    .addComponent(clear))
+                .addGap(25, 25, 25))
         );
 
         about.setText("File");
@@ -210,11 +221,11 @@ public class main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -223,8 +234,6 @@ public class main extends javax.swing.JFrame {
 
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
         // TODO add your handling code here:
-        
-        
 
         if (field1.getText().isEmpty() || field2.getText().isEmpty() || field3.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Fields Are Empty 1");
@@ -299,8 +308,6 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         //Panel color
-        jPanel1.setBackground(Color.white);
-
         //Label Colors
         jLabel3.setForeground(Color.black);
 
@@ -328,8 +335,6 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         //Panel color
-        jPanel1.setBackground(Color.black);
-
         //Label Colors
         jLabel3.setForeground(Color.white);
 
@@ -366,16 +371,48 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_aboutmenuActionPerformed
 
     private void field1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field1KeyTyped
-        
+
         char c = evt.getKeyChar();
-        
-        if(!Character.isDigit(c)){
-            
+
+        if (!Character.isDigit(c) && field1.getText().contains(".")) {
+
             evt.consume();
         }
-        
-        
+
+
     }//GEN-LAST:event_field1KeyTyped
+
+    private void field2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field2KeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && field1.getText().contains(".")) {
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_field2KeyTyped
+
+    private void field3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field3KeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && field1.getText().contains(".")) {
+
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_field3KeyTyped
+
+    private void field4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field4KeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && field1.getText().contains(".")) {
+
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_field4KeyTyped
 
     /**
      * @param args the command line arguments
@@ -416,6 +453,7 @@ public class main extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panel2;
     private javax.swing.JMenu about;
     private javax.swing.JMenuItem aboutmenu;
     private javax.swing.JButton calculate;
@@ -435,7 +473,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem lightTheme;
     // End of variables declaration//GEN-END:variables
