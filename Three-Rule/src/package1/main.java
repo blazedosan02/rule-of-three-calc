@@ -374,7 +374,7 @@ public class main extends javax.swing.JFrame {
 
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) && field1.getText().contains(".")) {
+        if (!Character.isDigit(c) && !Character.valueOf(c).equals('.')) {
 
             evt.consume();
         }
@@ -386,7 +386,7 @@ public class main extends javax.swing.JFrame {
 
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) && field1.getText().contains(".")) {
+        if (!Character.isDigit(c)) {
 
             evt.consume();
         }
