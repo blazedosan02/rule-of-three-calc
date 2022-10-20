@@ -1,9 +1,15 @@
 package package1;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 
 /**
  *
@@ -25,6 +31,7 @@ public class main extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jLabel1 = new javax.swing.JLabel();
         Panel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -35,6 +42,8 @@ public class main extends javax.swing.JFrame {
         field3 = new javax.swing.JTextField();
         field2 = new javax.swing.JTextField();
         field4 = new javax.swing.JTextField();
+        arrowLabel = new javax.swing.JLabel();
+        arrowLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         about = new javax.swing.JMenu();
         aboutmenu = new javax.swing.JMenuItem();
@@ -48,6 +57,8 @@ public class main extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         jMenuItem3.setText("jMenuItem3");
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Three Rule Calculator");
@@ -88,37 +99,40 @@ public class main extends javax.swing.JFrame {
 
         field1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        field1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                field1KeyTyped(evt);
+        field1.setText("0");
+        field1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                field1FocusGained(evt);
             }
         });
 
         field3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        field3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                field3KeyTyped(evt);
+        field3.setText("0");
+        field3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                field3FocusGained(evt);
             }
         });
 
         field2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        field2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                field2KeyTyped(evt);
+        field2.setText("0");
+        field2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                field2FocusGained(evt);
             }
         });
 
         field4.setEditable(false);
-        field4.setBackground(new java.awt.Color(255, 255, 255));
+        field4.setBackground(new java.awt.Color(153, 153, 153));
         field4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        field4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                field4KeyTyped(evt);
-            }
-        });
+        field4.setText("X");
+
+        arrowLabel.setText("-->");
+
+        arrowLabel2.setText("-->");
 
         javax.swing.GroupLayout Panel2Layout = new javax.swing.GroupLayout(Panel2);
         Panel2.setLayout(Panel2Layout);
@@ -131,20 +145,29 @@ public class main extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(calculate))
                 .addGap(28, 28, 28)
-                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Panel2Layout.createSequentialGroup()
                         .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(arrowLabel)
+                        .addGap(13, 13, 13)
+                        .addComponent(field2))
                     .addGroup(Panel2Layout.createSequentialGroup()
                         .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(calculate_again)
-                            .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(clear))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                            .addGroup(Panel2Layout.createSequentialGroup()
+                                .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(arrowLabel2)))
+                        .addGap(11, 11, 11)
+                        .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(Panel2Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(clear))
+                            .addGroup(Panel2Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(field4)))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         Panel2Layout.setVerticalGroup(
             Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,12 +176,14 @@ public class main extends javax.swing.JFrame {
                 .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(arrowLabel))
                 .addGap(29, 29, 29)
                 .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(arrowLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(calculate)
@@ -266,10 +291,10 @@ public class main extends javax.swing.JFrame {
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
 
-        field1.setText(null);
-        field2.setText(null);
-        field3.setText(null);
-        field4.setText(null);
+        field1.setText("0");
+        field2.setText("0");
+        field3.setText("0");
+        field4.setText("0");
 
         field1.setEditable(true);
         field2.setEditable(true);
@@ -370,53 +395,66 @@ public class main extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Version 1.3\nMarco Lecona 2018-2020");
     }//GEN-LAST:event_aboutmenuActionPerformed
 
-    private void field1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field1KeyTyped
+    private void field1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field1FocusGained
+        // TODO add your handling code here:
 
-        char c = evt.getKeyChar();
+        field1.setText("");
 
-        if (!Character.isDigit(c) && !Character.valueOf(c).equals('.')) {
+        createFilteredField(field1);
 
-            evt.consume();
-        }
+    }//GEN-LAST:event_field1FocusGained
 
+    private void field2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field2FocusGained
 
-    }//GEN-LAST:event_field1KeyTyped
+        field2.setText("");
 
-    private void field2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field2KeyTyped
+        createFilteredField(field2);
 
-        char c = evt.getKeyChar();
+    }//GEN-LAST:event_field2FocusGained
 
-        if (!Character.isDigit(c)) {
+    private void field3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field3FocusGained
 
-            evt.consume();
-        }
-    }//GEN-LAST:event_field2KeyTyped
+        field3.setText("");
 
-    private void field3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field3KeyTyped
+        createFilteredField(field3);
+    }//GEN-LAST:event_field3FocusGained
 
-        char c = evt.getKeyChar();
+    public void createFilteredField(JTextField field) {
 
-        if (!Character.isDigit(c) && field1.getText().contains(".")) {
+        AbstractDocument document = (AbstractDocument) field.getDocument();
+        final int maxCharacters = 25;
+        document.setDocumentFilter(new DocumentFilter() {
+            public void replace(DocumentFilter.FilterBypass fb, int offs, int length,
+                    String str, AttributeSet a) throws BadLocationException {
 
-            evt.consume();
-        }
+                String text = fb.getDocument().getText(0,
+                        fb.getDocument().getLength());
+                text += str;
+                if ((fb.getDocument().getLength() + str.length() - length) <= maxCharacters
+                        && text.matches("([+-]?(?=\\.\\d|\\d)(?:\\d+)?(?:\\.?\\d*))(?:[eE]([+-]?\\d+))?")) {
+                    super.replace(fb, offs, length, str, a);
+                } else {
+                    Toolkit.getDefaultToolkit().beep();
+                }
+            }
 
-    }//GEN-LAST:event_field3KeyTyped
+            public void insertString(DocumentFilter.FilterBypass fb, int offs, String str,
+                    AttributeSet a) throws BadLocationException {
 
-    private void field4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field4KeyTyped
+                String text = fb.getDocument().getText(0,
+                        fb.getDocument().getLength());
+                text += str;
+                if ((fb.getDocument().getLength() + str.length()) <= maxCharacters
+                        && text.matches("([+-]?(?=\\.\\d|\\d)(?:\\d+)?(?:\\.?\\d*))(?:[eE]([+-]?\\d+))?")) {
+                    super.insertString(fb, offs, str, a);
+                } else {
+                    Toolkit.getDefaultToolkit().beep();
+                }
+            }
+        });
 
-        char c = evt.getKeyChar();
+    }
 
-        if (!Character.isDigit(c) && field1.getText().contains(".")) {
-
-            evt.consume();
-        }
-
-    }//GEN-LAST:event_field4KeyTyped
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -456,6 +494,8 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel Panel2;
     private javax.swing.JMenu about;
     private javax.swing.JMenuItem aboutmenu;
+    private javax.swing.JLabel arrowLabel;
+    private javax.swing.JLabel arrowLabel2;
     private javax.swing.JButton calculate;
     private javax.swing.JButton calculate_again;
     private javax.swing.JButton clear;
@@ -465,6 +505,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField field2;
     private javax.swing.JTextField field3;
     private javax.swing.JTextField field4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu2;
