@@ -53,31 +53,24 @@ public class main extends javax.swing.JFrame {
         setTitle("Three Rule Calculator");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setToolTipText("");
 
-        field1.setBackground(new java.awt.Color(0, 0, 0));
-        field1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        field1.setForeground(new java.awt.Color(255, 255, 255));
+        field1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        field2.setBackground(new java.awt.Color(0, 0, 0));
-        field2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        field2.setForeground(new java.awt.Color(255, 255, 255));
+        field2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        field3.setBackground(new java.awt.Color(0, 0, 0));
-        field3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        field3.setForeground(new java.awt.Color(255, 255, 255));
+        field3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         field4.setEditable(false);
-        field4.setBackground(new java.awt.Color(0, 0, 0));
-        field4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        field4.setForeground(new java.awt.Color(255, 255, 255));
+        field4.setBackground(new java.awt.Color(255, 255, 255));
+        field4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         field4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        calculate.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        calculate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         calculate.setText("Calculate");
         calculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +78,7 @@ public class main extends javax.swing.JFrame {
             }
         });
 
-        clear.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        clear.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         clear.setText("Clear");
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,15 +86,13 @@ public class main extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Proportion A");
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("Proportion B");
 
-        calculate_again.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        calculate_again.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         calculate_again.setText("Calculate Again");
         calculate_again.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +105,7 @@ public class main extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
@@ -157,7 +148,7 @@ public class main extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(calculate)
                         .addComponent(calculate_again)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         about.setText("File");
@@ -380,7 +371,7 @@ public class main extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
