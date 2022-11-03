@@ -2,8 +2,6 @@ package package1;
 
 import java.awt.Color;
 import java.awt.Toolkit;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.AbstractDocument;
@@ -91,9 +89,9 @@ public class main extends javax.swing.JFrame {
         field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field1.setText("0");
         field1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        field1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                field1FocusGained(evt);
+        field1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                field1KeyReleased(evt);
             }
         });
 
@@ -101,9 +99,9 @@ public class main extends javax.swing.JFrame {
         field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field3.setText("0");
         field3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        field3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                field3FocusGained(evt);
+        field3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                field3KeyReleased(evt);
             }
         });
 
@@ -111,9 +109,9 @@ public class main extends javax.swing.JFrame {
         field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field2.setText("0");
         field2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        field2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                field2FocusGained(evt);
+        field2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                field2KeyReleased(evt);
             }
         });
 
@@ -238,19 +236,7 @@ public class main extends javax.swing.JFrame {
 
         } else {
 
-            field4.setText(null);
-
-            field1c = Float.parseFloat(field1.getText());
-
-            field2c = Float.parseFloat(field2.getText());
-
-            field3c = Float.parseFloat(field3.getText());
-
-            float result = (field3c * field2c) / field1c;
-
-            String resultfinal = Float.toString(result);
-
-            field4.setText(resultfinal);
+            calculate();
 
         }
 
@@ -339,28 +325,23 @@ public class main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_aboutmenuActionPerformed
 
-    private void field1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field1FocusGained
+    private void field1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field1KeyReleased
 
-        field1.setText("");
+        calculate();
 
-        createFilteredField(field1);
+    }//GEN-LAST:event_field1KeyReleased
 
-    }//GEN-LAST:event_field1FocusGained
+    private void field2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field2KeyReleased
 
-    private void field2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field2FocusGained
+        calculate();
 
-        field2.setText("");
+    }//GEN-LAST:event_field2KeyReleased
 
-        createFilteredField(field2);
+    private void field3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field3KeyReleased
 
-    }//GEN-LAST:event_field2FocusGained
+        calculate();
 
-    private void field3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field3FocusGained
-
-        field3.setText("");
-
-        createFilteredField(field3);
-    }//GEN-LAST:event_field3FocusGained
+    }//GEN-LAST:event_field3KeyReleased
 
     public void createFilteredField(JTextField field) {
 
@@ -395,6 +376,32 @@ public class main extends javax.swing.JFrame {
                 }
             }
         });
+
+    }
+
+    public void calculate() {
+
+        try {
+
+            field4.setText(null);
+
+            field1c = Float.parseFloat(field1.getText());
+
+            field2c = Float.parseFloat(field2.getText());
+
+            field3c = Float.parseFloat(field3.getText());
+
+            float result = (field3c * field2c) / field1c;
+
+            String resultfinal = Float.toString(result);
+
+            field4.setText(resultfinal);
+
+        } catch (NumberFormatException num) {
+
+            field4.setText("0");
+
+        }
 
     }
 
