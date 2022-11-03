@@ -1,9 +1,13 @@
 package package1;
 
 import java.awt.Color;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 
 /**
  *
@@ -25,23 +29,21 @@ public class main extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jPanel1 = new javax.swing.JPanel();
-        field1 = new javax.swing.JTextField();
-        field2 = new javax.swing.JTextField();
-        field3 = new javax.swing.JTextField();
-        field4 = new javax.swing.JTextField();
-        calculate = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        mainPanel = new javax.swing.JPanel();
+        proportionA = new javax.swing.JLabel();
+        proportionB = new javax.swing.JLabel();
         clear = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        calculate_again = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        field1 = new javax.swing.JTextField();
+        field3 = new javax.swing.JTextField();
+        field2 = new javax.swing.JTextField();
+        field4 = new javax.swing.JTextField();
+        arrowLabel = new javax.swing.JLabel();
+        arrowLabel2 = new javax.swing.JLabel();
+        menuBar = new javax.swing.JMenuBar();
         about = new javax.swing.JMenu();
         aboutmenu = new javax.swing.JMenuItem();
-        closeMenu = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        editMenu = new javax.swing.JMenu();
         lightTheme = new javax.swing.JMenuItem();
         darkTheme = new javax.swing.JMenuItem();
 
@@ -49,115 +51,118 @@ public class main extends javax.swing.JFrame {
 
         jMenuItem3.setText("jMenuItem3");
 
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Three Rule Calculator");
+        setTitle("Rule Of Three Calculator");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setToolTipText("");
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setPreferredSize(new java.awt.Dimension(492, 210));
 
-        field1.setBackground(new java.awt.Color(0, 0, 0));
-        field1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        field1.setForeground(new java.awt.Color(255, 255, 255));
-        field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        proportionA.setBackground(new java.awt.Color(0, 0, 0));
+        proportionA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        proportionA.setText("Proportion A");
 
-        field2.setBackground(new java.awt.Color(0, 0, 0));
-        field2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        field2.setForeground(new java.awt.Color(255, 255, 255));
-        field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        proportionB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        proportionB.setText("Proportion B");
 
-        field3.setBackground(new java.awt.Color(0, 0, 0));
-        field3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        field3.setForeground(new java.awt.Color(255, 255, 255));
-        field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        field4.setEditable(false);
-        field4.setBackground(new java.awt.Color(0, 0, 0));
-        field4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        field4.setForeground(new java.awt.Color(255, 255, 255));
-        field4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        calculate.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        calculate.setText("Calculate");
-        calculate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calculateActionPerformed(evt);
-            }
-        });
-
-        clear.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        clear.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         clear.setText("Clear");
+        clear.setPreferredSize(new java.awt.Dimension(172, 27));
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Proportion A");
-
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Proportion B");
-
-        calculate_again.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        calculate_again.setText("Calculate Again");
-        calculate_again.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calculate_againActionPerformed(evt);
+        field1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        field1.setText("0");
+        field1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        field1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                field1KeyReleased(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)))
-                    .addComponent(calculate))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        field3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        field3.setText("0");
+        field3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        field3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                field3KeyReleased(evt);
+            }
+        });
+
+        field2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        field2.setText("0");
+        field2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        field2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                field2KeyReleased(evt);
+            }
+        });
+
+        field4.setEditable(false);
+        field4.setBackground(new java.awt.Color(153, 153, 153));
+        field4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        field4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        field4.setText("X");
+        field4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        arrowLabel.setText("-->");
+
+        arrowLabel2.setText("-->");
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(proportionA)
+                    .addComponent(proportionB))
+                .addGap(33, 33, 33)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(calculate_again)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(clear)))
-                .addGap(54, 54, 54))
+                        .addGap(27, 27, 27)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(arrowLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(arrowLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(field2))))
+                    .addComponent(clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(proportionA)
                     .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(arrowLabel)
+                    .addComponent(field2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(proportionB)
                     .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(clear)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(calculate)
-                        .addComponent(calculate_again)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(arrowLabel2)
+                    .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
         about.setText("File");
@@ -170,21 +175,9 @@ public class main extends javax.swing.JFrame {
         });
         about.add(aboutmenu);
 
-        closeMenu.setText("Close");
-        closeMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                closeMenuActionPerformed(evt);
-            }
-        });
-        about.add(closeMenu);
+        menuBar.add(about);
 
-        jMenuBar1.add(about);
-
-        jMenu2.setText("Edit");
-
-        jMenu3.setText("Appearance");
-
-        jMenu4.setText("Theme");
+        editMenu.setText("View");
 
         lightTheme.setText("Light Theme");
         lightTheme.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +185,7 @@ public class main extends javax.swing.JFrame {
                 lightThemeActionPerformed(evt);
             }
         });
-        jMenu4.add(lightTheme);
+        editMenu.add(lightTheme);
 
         darkTheme.setText("Dark Theme");
         darkTheme.addActionListener(new java.awt.event.ActionListener() {
@@ -200,71 +193,33 @@ public class main extends javax.swing.JFrame {
                 darkThemeActionPerformed(evt);
             }
         });
-        jMenu4.add(darkTheme);
+        editMenu.add(darkTheme);
 
-        jMenu3.add(jMenu4);
+        menuBar.add(editMenu);
 
-        jMenu2.add(jMenu3);
-
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
-        // TODO add your handling code here:
-        
-        
-
-        if (field1.getText().isEmpty() || field2.getText().isEmpty() || field3.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Fields Are Empty 1");
-
-        } else if (field4.getText().isEmpty()) {
-
-            field4.setText(null);
-
-            field1c = Float.parseFloat(field1.getText());
-
-            field2c = Float.parseFloat(field2.getText());
-
-            field3c = Float.parseFloat(field3.getText());
-
-            float result = (field3c * field2c) / field1c;
-
-            String resultfinal = Float.toString(result);
-
-            field4.setText(resultfinal);
-            option = 1;
-
-        } else {
-
-            JOptionPane.showMessageDialog(null, "Fields Are Empty 2");
-        }
-
-
-    }//GEN-LAST:event_calculateActionPerformed
-
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        // TODO add your handling code here:
 
-        field1.setText(null);
-        field2.setText(null);
-        field3.setText(null);
-        field4.setText(null);
+        field1.setText("0");
+        field2.setText("0");
+        field3.setText("0");
+        field4.setText("X");
 
         field1.setEditable(true);
         field2.setEditable(true);
@@ -275,40 +230,17 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_clearActionPerformed
 
 
-    private void calculate_againActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculate_againActionPerformed
-        // TODO add your handling code here:
-
-        if (option == 1) {
-
-            field4.setText(null);
-
-        } else if (option == 2) {
-
-            field3.setText(null);
-
-        } else if (option == 3) {
-
-            field1.setText(null);
-
-        } else if (option == 4) {
-
-            field2.setText(null);
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Fields Are Empty");
-        }
-    }//GEN-LAST:event_calculate_againActionPerformed
-
     private void lightThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lightThemeActionPerformed
-        // TODO add your handling code here:
 
-        //Panel color
-        jPanel1.setBackground(Color.white);
+        mainPanel.setBackground(Color.white);
 
-        //Label Colors
-        jLabel3.setForeground(Color.black);
+        proportionA.setForeground(Color.black);
 
-        jLabel4.setForeground(Color.black);
+        proportionB.setForeground(Color.black);
+
+        arrowLabel.setForeground(Color.black);
+
+        arrowLabel2.setForeground(Color.black);
 
         //Field Colors
         field1.setForeground(Color.black);
@@ -329,49 +261,121 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_lightThemeActionPerformed
 
     private void darkThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darkThemeActionPerformed
-        // TODO add your handling code here:
 
-        //Panel color
-        jPanel1.setBackground(Color.black);
+        mainPanel.setBackground(new Color(20, 20, 20));
 
-        //Label Colors
-        jLabel3.setForeground(Color.white);
+        proportionA.setForeground(Color.white);
 
-        jLabel4.setForeground(Color.white);
+        proportionB.setForeground(Color.white);
+
+        arrowLabel.setForeground(Color.white);
+
+        arrowLabel2.setForeground(Color.white);
 
         //Field Colors
         field1.setForeground(Color.white);
 
-        field1.setBackground(Color.black);
+        field1.setBackground(new Color(51, 51, 51));
 
         field2.setForeground(Color.white);
 
-        field2.setBackground(Color.black);
+        field2.setBackground(new Color(51, 51, 51));
 
         field3.setForeground(Color.white);
 
-        field3.setBackground(Color.black);
+        field3.setBackground(new Color(51, 51, 51));
 
         field4.setForeground(Color.white);
 
-        field4.setBackground(Color.black);
+        field4.setBackground(new Color(51, 51, 51));
     }//GEN-LAST:event_darkThemeActionPerformed
 
-    private void closeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeMenuActionPerformed
-        // TODO add your handling code here:
-
-        System.exit(0);
-    }//GEN-LAST:event_closeMenuActionPerformed
-
     private void aboutmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutmenuActionPerformed
-        // TODO add your handling code here:
 
-        JOptionPane.showMessageDialog(null, "Version 1.3\nMarco Lecona 2018-2020");
+        JOptionPane.showMessageDialog(null, "Version 2.0\nMarco Lecona 2018-2022");
+
     }//GEN-LAST:event_aboutmenuActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void field1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field1KeyReleased
+
+        calculate();
+
+    }//GEN-LAST:event_field1KeyReleased
+
+    private void field2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field2KeyReleased
+
+        calculate();
+
+    }//GEN-LAST:event_field2KeyReleased
+
+    private void field3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field3KeyReleased
+
+        calculate();
+
+    }//GEN-LAST:event_field3KeyReleased
+
+    public void createFilteredField(JTextField field) {
+
+        AbstractDocument document = (AbstractDocument) field.getDocument();
+        final int maxCharacters = 25;
+        document.setDocumentFilter(new DocumentFilter() {
+            public void replace(DocumentFilter.FilterBypass fb, int offs, int length,
+                    String str, AttributeSet a) throws BadLocationException {
+
+                String text = fb.getDocument().getText(0,
+                        fb.getDocument().getLength());
+                text += str;
+                if ((fb.getDocument().getLength() + str.length() - length) <= maxCharacters
+                        && text.matches("([+-]?(?=\\.\\d|\\d)(?:\\d+)?(?:\\.?\\d*))(?:[eE]([+-]?\\d+))?")) {
+                    super.replace(fb, offs, length, str, a);
+                } else {
+                    Toolkit.getDefaultToolkit().beep();
+                }
+            }
+
+            public void insertString(DocumentFilter.FilterBypass fb, int offs, String str,
+                    AttributeSet a) throws BadLocationException {
+
+                String text = fb.getDocument().getText(0,
+                        fb.getDocument().getLength());
+                text += str;
+                if ((fb.getDocument().getLength() + str.length()) <= maxCharacters
+                        && text.matches("([+-]?(?=\\.\\d|\\d)(?:\\d+)?(?:\\.?\\d*))(?:[eE]([+-]?\\d+))?")) {
+                    super.insertString(fb, offs, str, a);
+                } else {
+                    Toolkit.getDefaultToolkit().beep();
+                }
+            }
+        });
+
+    }
+
+    public void calculate() {
+
+        try {
+
+            field4.setText(null);
+
+            field1c = Float.parseFloat(field1.getText());
+
+            field2c = Float.parseFloat(field2.getText());
+
+            field3c = Float.parseFloat(field3.getText());
+
+            float result = (field3c * field2c) / field1c;
+
+            String resultfinal = Float.toString(result);
+
+            field4.setText(resultfinal);
+
+        } catch (NumberFormatException num) {
+
+            field4.setText("0");
+
+        }
+
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -380,7 +384,7 @@ public class main extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -410,25 +414,23 @@ public class main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu about;
     private javax.swing.JMenuItem aboutmenu;
-    private javax.swing.JButton calculate;
-    private javax.swing.JButton calculate_again;
+    private javax.swing.JLabel arrowLabel;
+    private javax.swing.JLabel arrowLabel2;
     private javax.swing.JButton clear;
-    private javax.swing.JMenuItem closeMenu;
     private javax.swing.JMenuItem darkTheme;
+    private javax.swing.JMenu editMenu;
     private javax.swing.JTextField field1;
     private javax.swing.JTextField field2;
     private javax.swing.JTextField field3;
     private javax.swing.JTextField field4;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem lightTheme;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JLabel proportionA;
+    private javax.swing.JLabel proportionB;
     // End of variables declaration//GEN-END:variables
 }
