@@ -80,6 +80,11 @@ public class main extends javax.swing.JFrame {
         field1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field1.setText("0");
         field1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        field1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                field1FocusGained(evt);
+            }
+        });
         field1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 field1KeyReleased(evt);
@@ -90,6 +95,11 @@ public class main extends javax.swing.JFrame {
         field3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field3.setText("0");
         field3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        field3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                field3FocusGained(evt);
+            }
+        });
         field3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 field3KeyReleased(evt);
@@ -100,6 +110,11 @@ public class main extends javax.swing.JFrame {
         field2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         field2.setText("0");
         field2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        field2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                field2FocusGained(evt);
+            }
+        });
         field2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 field2KeyReleased(evt);
@@ -160,7 +175,7 @@ public class main extends javax.swing.JFrame {
                     .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(arrowLabel2)
                     .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -207,7 +222,7 @@ public class main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
         );
 
         pack();
@@ -314,6 +329,32 @@ public class main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_field3KeyReleased
 
+    private void field1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field1FocusGained
+
+        createFilteredField(field1);
+
+        setZero(field1);
+
+
+    }//GEN-LAST:event_field1FocusGained
+
+    private void field2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field2FocusGained
+
+        createFilteredField(field2);
+
+        setZero(field2);
+
+
+    }//GEN-LAST:event_field2FocusGained
+
+    private void field3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_field3FocusGained
+
+        createFilteredField(field3);
+
+        setZero(field3);
+
+    }//GEN-LAST:event_field3FocusGained
+
     public void createFilteredField(JTextField field) {
 
         AbstractDocument document = (AbstractDocument) field.getDocument();
@@ -374,6 +415,15 @@ public class main extends javax.swing.JFrame {
 
         }
 
+    }
+
+    public void setZero(JTextField field) {
+
+        if (field.getText().equals("0")) {
+
+            field.setText("");
+
+        }
     }
 
     public static void main(String args[]) {
