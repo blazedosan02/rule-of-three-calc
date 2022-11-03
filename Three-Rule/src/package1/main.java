@@ -33,7 +33,6 @@ public class main extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         proportionA = new javax.swing.JLabel();
         proportionB = new javax.swing.JLabel();
-        calculate = new javax.swing.JButton();
         clear = new javax.swing.JButton();
         field1 = new javax.swing.JTextField();
         field3 = new javax.swing.JTextField();
@@ -67,14 +66,6 @@ public class main extends javax.swing.JFrame {
 
         proportionB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         proportionB.setText("Proportion B");
-
-        calculate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        calculate.setText("Calculate");
-        calculate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calculateActionPerformed(evt);
-            }
-        });
 
         clear.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         clear.setText("Clear");
@@ -132,30 +123,26 @@ public class main extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(proportionA)
+                    .addComponent(proportionB))
+                .addGap(33, 33, 33)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(proportionA)
-                            .addComponent(proportionB))
-                        .addGap(33, 33, 33)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(field1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(calculate, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(arrowLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(mainPanelLayout.createSequentialGroup()
-                            .addComponent(arrowLabel)
-                            .addGap(18, 18, 18)
-                            .addComponent(field2)))
-                    .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(arrowLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(arrowLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(field2))))
+                    .addComponent(clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 22, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
@@ -173,11 +160,9 @@ public class main extends javax.swing.JFrame {
                     .addComponent(field3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(arrowLabel2)
                     .addComponent(field4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(calculate)
-                    .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
         about.setText("File");
@@ -228,20 +213,6 @@ public class main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
-
-        if (field1.getText().isEmpty() || field2.getText().isEmpty() || field3.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Fields Are Empty");
-
-        } else {
-
-            calculate();
-
-        }
-
-
-    }//GEN-LAST:event_calculateActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
 
@@ -445,7 +416,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem aboutmenu;
     private javax.swing.JLabel arrowLabel;
     private javax.swing.JLabel arrowLabel2;
-    private javax.swing.JButton calculate;
     private javax.swing.JButton clear;
     private javax.swing.JMenuItem darkTheme;
     private javax.swing.JMenu editMenu;
